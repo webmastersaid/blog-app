@@ -25,6 +25,18 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::prefix('posts')->name('post.')->namespace('Post')->group(function () {
             Route::get('/', IndexController::class)->name('index');
             Route::get('/{post}', ShowController::class)->name('show');
+            Route::prefix('{post}/comments')->name('comment.')->namespace('Comment')->group(function () {
+                Route::post('/', StoreController::class)->name('store');
+            });
+            Route::prefix('{post}/likes')->name('like.')->namespace('Like')->group(function () {
+                Route::post('/', StoreController::class)->name('store');
+            });
+        });
+        Route::prefix('categories')->name('category.')->namespace('Category')->group(function (){
+            Route::get('/', IndexController::class)->name('index');
+            Route::prefix('{category}/posts')->name('post.')->namespace('Post')->group(function () {
+                Route::get('/', IndexController::class)->name('index');
+            });
         });
     });
     Route::prefix('personal')->name('personal.')->namespace('Personal')->middleware(['auth', 'verified'])->group(function () {

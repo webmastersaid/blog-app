@@ -8,11 +8,11 @@ use Carbon\Carbon;
 
 class IndexController extends Controller
 {
-    public function __invoke(Post $posts)
+    public function __invoke()
     {
-        $sortedPosts = $posts->get()->sortBy('created_at');
-        $headerPosts = $sortedPosts->take(1);
-        $randomPosts = $posts->where('id', '!=', $headerPosts[0]->id)->get()->random(2);
-        return view('main.home.index', compact('sortedPosts', 'headerPosts', 'randomPosts'));
+        $headerPosts = Post::orderBy('created_at', 'DESC')->get()->take(1);
+        $randomPosts = Post::orderBy('created_at', 'DESC')->where('id', '!=', $headerPosts[0]->id)->get()->take(2);
+        $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get();
+        return view('main.home.index', compact('headerPosts', 'randomPosts', 'likedPosts'));
     }
 }

@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="tagMultipleSelect" class="form-label">Select category</label>
+                    <label for="tagMultipleSelect" class="form-label">Select tag</label>
                     <select id="tagMultipleSelect" class="form-select" name="tag_ids[]" multiple
                         aria-label="Multiple select tags">
                         @foreach ($tags as $tag)

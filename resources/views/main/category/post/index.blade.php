@@ -1,8 +1,8 @@
 @extends('main.layouts.main')
 @section('content')
     <div class="container pt-5">
-        <h1>All posts</h1>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 pt-4 mb-3">
+        <h1>{{ $categoryName }}</h1>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 pt-4">
             @foreach ($posts as $post)
                 <div class="col">
                     <div class="card shadow-sm">
@@ -67,9 +67,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-        <div class="mb-3 d-flex justify-content-center">
-            {{ $posts->links() }}
         </div>
     </div>
 @endsection

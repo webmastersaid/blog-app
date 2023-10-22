@@ -2,11 +2,11 @@
 @section('content')
     @foreach ($headerPosts as $post)
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary" style="background-image: url('{{Storage::url($post->preview_image)}}'); background-size: cover;">
-            <div class="col-lg-6 px-0">
+            <div class="col-lg-6 p-4 rounded text-white" style="background-color: rgba(0, 0, 0, 0.2);">
                 <h1 class="display-4 fst-italic">{{ $post->title }}</h1>
                 <p class="lead my-3">{{ $post->content }}</p>
                 <p class="lead mb-0"><a href="{{ route('main.post.show', $post->id) }}"
-                        class="text-body-emphasis fw-bold">Continue reading...</a></p>
+                        class="fw-bold">Continue reading...</a></p>
             </div>
         </div>
     @endforeach
@@ -211,9 +211,9 @@
                 </div>
 
                 <div>
-                    <h4 class="fst-italic">Recent posts</h4>
+                    <h4 class="fst-italic">Popular posts</h4>
                     <ul class="list-unstyled">
-                        @foreach ($sortedPosts as $post)
+                        @foreach ($likedPosts as $post)
                             <li>
                                 <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
                                     href="#">
