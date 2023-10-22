@@ -22,7 +22,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
         Route::namespace('Home')->group(function () {
             Route::get('/', IndexController::class)->name('home.index');
         });
-        Route::prefix('blog')->name('blog.')->namespace('Blog')->group(function () {
+        Route::prefix('posts')->name('post.')->namespace('Post')->group(function () {
             Route::get('/', IndexController::class)->name('index');
             Route::get('/{post}', ShowController::class)->name('show');
         });
